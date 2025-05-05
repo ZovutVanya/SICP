@@ -1,0 +1,11 @@
+#lang sicp
+
+(define (2largest a b c)
+  (cond 
+    ((and (< a b) (< a c)) (cons 'b c))
+    ((and (< b a) (< b c)) (cons 'a c))
+    ((and (< c b) (< c a)) (cons 'b a))
+    )
+  )
+
+(2largest 1 2 3)
