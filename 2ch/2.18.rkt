@@ -7,7 +7,10 @@
     (if 
       (null? old-lst)
       new-lst
-      (reverse-iter (cons (car old-lst) new-lst) (cdr old-lst))
+      (reverse-iter 
+        (cons (car old-lst) new-lst) 
+        (cdr old-lst)
+      )
     )
   )
   (reverse-iter (list) lst)
