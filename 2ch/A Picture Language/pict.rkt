@@ -96,12 +96,29 @@ to their couterparts in the frame|#
 (define edge1-frame cadr)
 (define edge2-frame caddr)
 
+#| (define (segments->painter segment-list) |#
+#|   (λ (frame) |#
+#|     (for-each |#
+#|       (λ (segment) |#
+#|         (draw-line  |#
+#|           ((frame-coord-map frame) (start-segment segment)) |#
+#|           ((frame-coord-map frame) (end-segment segment)) |#
+#|         ) |#
+#|       ) |#
+#|       segment-list |#
+#|     ) |#
+#|   ) |#
+#| ) |#
+
 (provide 
   flipped-pairs 
   right-split 
   up-split 
   square-of-four 
   frame-coord-map 
+  make-vect
+  xcor-vect
+  ycor-vect
   add-vect 
   sub-vect 
   scale-vect
