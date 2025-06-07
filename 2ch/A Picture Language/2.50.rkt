@@ -1,0 +1,37 @@
+#lang racket
+(require sicp-pict)
+#| Define the transformation flip-horiz, which flips painters horizontally, |#
+#| and transformations that rotate painters counterclockwise
+by 180 degrees and 270 degrees. |#
+
+(define (flip-horiz painter)
+  (transform-painter
+    painter
+    (make-vect 0 1)
+    (make-vect 1 1)
+    (make-vect 0 0)
+  )
+)
+
+(define (rotate-180 painter)
+  (transform-painter
+    painter
+    (make-vect 1 1)
+    (make-vect 0 1)
+    (make-vect 1 0)
+  )
+)
+
+(define (rotate-270 painter)
+  (transform-painter
+    painter
+    (make-vect 0 1)
+    (make-vect 0 0)
+    (make-vect 1 1)
+  )
+)
+
+(paint einstein)
+(paint (flip-horiz einstein))
+(paint (rotate-180 einstein))
+(paint (rotate-270 einstein))
