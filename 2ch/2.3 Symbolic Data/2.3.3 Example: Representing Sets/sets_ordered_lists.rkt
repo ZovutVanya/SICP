@@ -1,4 +1,9 @@
 #lang racket
+(provide
+  union-set
+  intersection-set
+  element-of-set?
+)
 
 (define (element-of-set? x set)
   (cond ((null? set) false)

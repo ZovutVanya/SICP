@@ -1,4 +1,5 @@
 #lang racket
+(require "sets_ordered_lists.rkt")
 
 (define (entry tree) (car tree))
 (define (left-branch tree) (cadr tree))
@@ -29,6 +30,7 @@
           (left-branch set)
           (adjoin-set x (right-branch set))))))
 
+; 2.63
 (define (tree->list-1 tree)
   (if (null? tree)
       '()
@@ -115,3 +117,31 @@ Draw the tree produced by list->tree for the list (1 3 5 7 9 11). |#
 #| What is the order of growth in the number of steps required by list->tree to convert a list of n elements?
 
  - Each step reduces the problem set by half but makes 2 calls so the growth is O(n) |#
+
+
+; 2.65
+(define (union-tree set1 set2)
+  (list->tree (union-set (tree->list-2 set1) (tree->list-2 set2))))
+
+(define (intersection-tree set1 set2)
+  (list->tree (intersection-set (tree->list-2 set1) (tree->list-2 set2))))
+
+; 2.66
+(define (lookup given-key set-of-records)
+  (let ((current-key (key (car set-of-records))))
+   (cond 
+    ((null? set-of-records)
+      false)
+    ((equal? given-key current-key)
+      (car set-of-records))
+    ((< given-key current-key)
+      (lookup given-key (left-branch set-of-records)))
+    ((> given-key current-key)
+      (lookup given-key (right-branch set-of-records)))
+   )
+  )
+)
+(define key car)
+
+(lookup 3 '((1 flour) (2 water) (3 salt)))
+(lookup 3 '((2 water) ((1 flour) () ()) ((3 salt) () ())))

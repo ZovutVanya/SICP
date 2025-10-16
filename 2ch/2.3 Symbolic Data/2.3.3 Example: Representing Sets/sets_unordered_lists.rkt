@@ -1,5 +1,11 @@
 #lang racket
 (require (only-in sicp-collection/sicp-module accumulate))
+(provide 
+  element-of-set?
+  adjoin-set
+  intersection-set
+  union-set
+)
 
 (define (element-of-set? x set)
   (cond ((null? set) false)
